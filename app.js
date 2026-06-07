@@ -23,7 +23,12 @@ const addressRoutes = require('./routes/addresses');
 const app = express();
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(cors({ origin: config.clientUrl, credentials: true }));
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://client-my-store.vercel.app', 'https://server-mystore.onrender.com']
+    : ['http://localhost:5173', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
