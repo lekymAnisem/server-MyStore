@@ -20,6 +20,6 @@ module.exports = {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
+  clientUrl: process.env.CLIENT_URL || 'https://client-my-store.vercel.app',
   nodeEnv: process.env.NODE_ENV || 'development',
 };
